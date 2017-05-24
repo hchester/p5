@@ -1,3 +1,5 @@
+//refer to bit.ly/2qWNMgW for terminology about ellipses 
+
 var sunX;
 var sunY;
 var velocity;
