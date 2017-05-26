@@ -10,7 +10,7 @@ var r;
 function setup() {
   //starting theta and velocity
   theta = 0;
-  velocity= .015; 
+  velocity = 0; 
 }
 function draw() {
    //sets width and heigth to size of the window.
@@ -28,7 +28,7 @@ function draw() {
     sunY=height/2;
     
     //the x position of the sun is set at the focus of the ellipse by usind the equation c^2 = a^2-b^2
-    sunX=(width/2) - Math.sqrt(Math.pow(a, 2)-Math.pow(b, 2));
+    sunX=(width/2) + Math.sqrt(Math.pow(a, 2)-Math.pow(b, 2));
   }
   
   //heigh of the ellipse is greater
@@ -38,7 +38,7 @@ function draw() {
     sunX=width/2;
     
     //the y position of the sun is set at the focus of the ellipse using the equation c^2 = b^2-a^2 
-    sunY= (height/2) -Math.sqrt(Math.pow(b, 2)-Math.pow(a, 2));
+    sunY= (height/2) + Math.sqrt(Math.pow(b, 2)-Math.pow(a, 2));
   }
   
 
@@ -56,11 +56,11 @@ function draw() {
   
   //draws the planet and controls the planets motion
   
-  //sets the x position of the planet multiplying a, the width of the ellipse /2, and the sin of two theta
-  var x = a * sin(theta);
+  //sets the x position of the planet multiplying a, the width of the ellipse /2, and the sin of 15 theta
+  var x = a * sin(15*theta);
   
-  //sets the y position of the planet multiplying b, the height of the ellipse /2, and the cos of two theta
-  var y =  b * cos(theta);
+  //sets the y position of the planet multiplying b, the height of the ellipse /2, and the cos of 15 theta
+  var y =  b * cos(15*theta);
   
   //centers the planet's orbit at the center of the screen 
   translate(width/2, height/2);
@@ -69,19 +69,17 @@ function draw() {
   fill(70, 137, 102);
   ellipse(x, y, 10, 10);
   
-  //working on making the planet go faster near the sun
+  //making the planet go faster near the sun
   
   //calculates distance based on the distance formula
-  //distance = Math.sqrt((Math.pow((sunX-x), 2))+Math.pow((sunY-y), 2));
+  distance = Math.sqrt((Math.pow((sunX-x), 2))+Math.pow((sunY-y), 2));
   
+  //calculates the raidus of curvature of the orbit at the planets position
   r = (Math.pow(((a*a*sin(theta)*sin(theta))+(b*b*cos(theta)*cos(theta))), 1.5)/(a*b));
-  //trying to change velocity of the planet, only slows the planet down for now
-  velocity=((Math.sqrt(r))/distance)/200000;
   
-  console.log(a);
-  console.log(b);
-  console.log(r);
-  
+  //velocity of the planet is dependent on the square root of the radius of curvature divided by distance 
+  velocity=(Math.sqrt(r))/(20*distance);
+   
   //incrementing theta by velocity
   theta+=velocity;
   
