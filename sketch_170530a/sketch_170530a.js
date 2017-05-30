@@ -29,6 +29,7 @@ function draw() {
     
     //the x position of the sun is set at the focus of the ellipse by usind the equation c^2 = a^2-b^2
     sunX=(width/2) + Math.sqrt(Math.pow(a, 2)-Math.pow(b, 2));
+    
   }
   
   //heigh of the ellipse is greater
@@ -57,10 +58,10 @@ function draw() {
   //draws the planet and controls the planets motion
   
   //sets the x position of the planet multiplying a, the width of the ellipse /2, and the sin of 15 theta
-  var x = a * sin(15*theta);
+  var x = a * sin(1500*theta);
   
   //sets the y position of the planet multiplying b, the height of the ellipse /2, and the cos of 15 theta
-  var y =  b * cos(15*theta);
+  var y =  b * cos(1500*theta);
   
   //centers the planet's orbit at the center of the screen 
   translate(width/2, height/2);
@@ -78,9 +79,18 @@ function draw() {
   r = (Math.pow(((a*a*sin(theta)*sin(theta))+(b*b*cos(theta)*cos(theta))), 1.5)/(a*b));
   
   //velocity of the planet is dependent on the square root of the radius of curvature divided by distance 
-  velocity=(Math.sqrt(r))/(20*distance);
+  velocity=(Math.sqrt(r))/(1000*distance);
    
   //incrementing theta by velocity
   theta+=velocity;
   
+  //displays the eccentricity of the planet's orbit
+  
+  noStroke();
+  fill(142, 40, 0);
+  textSize(20);
+  if(a>b)
+  text("Eccentricity: " + (Math.sqrt(Math.pow(a, 2)-Math.pow(b, 2))/a), 10-(width/2), 20-(height/2));
+  else text("Eccentricity: " + (Math.sqrt(Math.pow(b, 2)-Math.pow(a, 2))/b), 10-(width/2), 20-(height/2));
+  text("\nTry the eccentricities of the following objects!\nTriton: 0\nMoon: 0.0549\nMercury: 0.2056\nEris: 0.4407\nHalley's Comet: 0.9671", 10-(width/2), 20-(height/2));
 }
