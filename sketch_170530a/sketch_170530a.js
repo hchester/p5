@@ -58,10 +58,10 @@ function draw() {
   //draws the planet and controls the planets motion
   
   //sets the x position of the planet multiplying a, the width of the ellipse /2, and the sin of 15 theta
-  var x = a * sin(1500*theta);
+  var x = a * sin(3000*theta);
   
   //sets the y position of the planet multiplying b, the height of the ellipse /2, and the cos of 15 theta
-  var y =  b * cos(1500*theta);
+  var y =  b * cos(3000*theta);
   
   //centers the planet's orbit at the center of the screen 
   translate(width/2, height/2);
@@ -79,7 +79,7 @@ function draw() {
   r = (Math.pow(((a*a*sin(theta)*sin(theta))+(b*b*cos(theta)*cos(theta))), 1.5)/(a*b));
   
   //velocity of the planet is dependent on the square root of the radius of curvature divided by distance 
-  velocity=(Math.sqrt(r))/(5000*distance);
+  velocity=(Math.sqrt(r))/(50000*distance);
    
   //incrementing theta by velocity
   theta+=velocity;
