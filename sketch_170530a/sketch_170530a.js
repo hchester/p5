@@ -79,7 +79,7 @@ function draw() {
   r = (Math.pow(((a*a*sin(theta)*sin(theta))+(b*b*cos(theta)*cos(theta))), 1.5)/(a*b));
   
   //velocity of the planet is dependent on the square root of the radius of curvature divided by distance 
-  velocity=(Math.sqrt(r))/(50000*distance);
+  velocity=(Math.sqrt(r))/(5000*distance);
    
   //incrementing theta by velocity
   theta+=velocity;
